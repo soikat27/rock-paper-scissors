@@ -14,3 +14,10 @@ function getComputerChoice ()
             return ""
     }
 }
+
+function getHumanChoice ()
+{
+    let choice = prompt("Please type your valid choice (rock/paper/scissors): ");
+
+    return choice.toLowerCase();
+}

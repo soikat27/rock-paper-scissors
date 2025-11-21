@@ -84,36 +84,49 @@ function playRound (humanChoice, computerChoice)
     }
 }
 
-function playGame ()
+// function playGame ()
+// {
+//     for (let round = 1; round <= 5; round++)
+//     {
+//         console.log("Round " + round + ":");
+
+//         let humanChoice = getHumanChoice();
+//         let computerChoice = getComputerChoice();
+//         playRound(humanChoice, computerChoice);
+
+//         console.log(`ScoreBoard:\nYour score: ${humanScore}; Computer score: ${computerScore}`);
+//     }
+
+//     if (humanScore > computerScore)
+//     {
+//         console.log("You Win the Game!");
+//     }
+
+//     else if (humanScore < computerScore)
+//     {
+//         console.log("Computer Wins the Game!");
+//     }
+
+//     else
+//     {
+//         console.log("The Game Ended in a Tie!")
+//     }
+
+//     humanScore = 0;
+//     computerScore = 0;
+// }
+
+// playRound(getHumanChoice(), getComputerChoice());
+
+// add eventListeners to the buttons
+
+    // querySelect the element
+    // create a function that calls playRound with a humanChoice the buttons representing
+    // prepare eventListener
+
+const rock = document.querySelector("button#rock");
+function callRock (e)
 {
-    for (let round = 1; round <= 5; round++)
-    {
-        console.log("Round " + round + ":");
-
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
-        playRound(humanChoice, computerChoice);
-
-        console.log(`ScoreBoard:\nYour score: ${humanScore}; Computer score: ${computerScore}`);
-    }
-
-    if (humanScore > computerScore)
-    {
-        console.log("You Win the Game!");
-    }
-
-    else if (humanScore < computerScore)
-    {
-        console.log("Computer Wins the Game!");
-    }
-
-    else
-    {
-        console.log("The Game Ended in a Tie!")
-    }
-
-    humanScore = 0;
-    computerScore = 0;
+    playRound("rock", getComputerChoice());
 }
-
-playGame();
+rock.addEventListener("click", callRock);

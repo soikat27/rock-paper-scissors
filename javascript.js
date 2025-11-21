@@ -25,11 +25,13 @@ function getHumanChoice ()
 let humanScore = 0;
 let computerScore = 0;
 
+const result = document.querySelector(".result");
+
 function playRound (humanChoice, computerChoice)
 {
     if (humanChoice === computerChoice)
     {
-        console.log("Tie!");
+        result.textContent = "Tie!";
     }
 
     else
@@ -39,13 +41,13 @@ function playRound (humanChoice, computerChoice)
             case "rock":
                 if (computerChoice === "paper")
                 {
-                    console.log("You lose! Paper beats Rock.");
+                    result.textContent = "You lose! Paper beats Rock.";
                     computerScore++;
                 }
 
                 else 
                 {
-                    console.log("You win! Rock beats Scissors.");
+                    result.textContent = "You win! Rock beats Scissors.";
                     humanScore++;
                 }
 
@@ -54,13 +56,13 @@ function playRound (humanChoice, computerChoice)
             case "paper":
                 if (computerChoice === "rock")
                 {
-                    console.log("You win! Paper beats Rock.");
+                    result.textContent = "You win! Paper beats Rock.";
                     humanScore++;
                 }
 
                 else
                 {
-                    console.log("You lose! Scissors beats paper.");
+                    result.textContent = "You lose! Scissors beats paper.";
                     computerScore++;
                 }
 
@@ -69,13 +71,13 @@ function playRound (humanChoice, computerChoice)
             case "Scissors":
                 if (computerChoice === "rock")
                 {
-                    console.log("You lose! Rock beats Scissors.");
+                    result.textContent = "You lose! Rock beats Scissors.";
                     computerScore++;
                 }
 
                 else
                 {
-                    console.log("You win! Scissors beats paper.");
+                    result.textContent = "You win! Scissors beats paper.";
                     humanScore++;
                 }
 

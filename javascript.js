@@ -124,9 +124,30 @@ function playRound (humanChoice, computerChoice)
     // create a function that calls playRound with a humanChoice the buttons representing
     // prepare eventListener
 
-const rock = document.querySelector("button#rock");
-function callRock (e)
+const rock     = document.querySelector("button#rock");
+const paper    = document.querySelector("button#paper");
+const scissors = document.querySelector("button#scissors");
+
+function callRock(e)
 {
-    playRound("rock", getComputerChoice());
+    const btn = e.target.id;
+
+    switch (btn)
+    {
+        case "rock":
+            playRound("rock", getComputerChoice());
+            break;
+        case "paper":
+            playRound("paper", getComputerChoice());
+            break;
+        case "scissors":
+            playRound("scissors", getComputerChoice());
+            break;
+        default:
+            break;
+    }
 }
+
 rock.addEventListener("click", callRock);
+paper.addEventListener("click", callRock);
+scissors.addEventListener("click", callRock);

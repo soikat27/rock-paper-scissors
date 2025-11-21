@@ -18,20 +18,20 @@ function getComputerChoice ()
 function getHumanChoice ()
 {
     let choice = prompt("Please type your valid choice (rock/paper/scissors): ");
-
     return choice.toLowerCase();
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
-const result = document.querySelector(".result");
-
 function playRound (humanChoice, computerChoice)
 {
+    const score = document.querySelector(".score");
+    const sBoard = document.querySelector(".scoreBoard");
+
     if (humanChoice === computerChoice)
     {
-        result.textContent = "Tie!";
+        score.textContent = "Tie!";
     }
 
     else
@@ -41,13 +41,13 @@ function playRound (humanChoice, computerChoice)
             case "rock":
                 if (computerChoice === "paper")
                 {
-                    result.textContent = "You lose! Paper beats Rock.";
+                    score.textContent = "You lose! Paper beats Rock.";
                     computerScore++;
                 }
 
                 else 
                 {
-                    result.textContent = "You win! Rock beats Scissors.";
+                    score.textContent = "You win! Rock beats Scissors.";
                     humanScore++;
                 }
 
@@ -56,34 +56,36 @@ function playRound (humanChoice, computerChoice)
             case "paper":
                 if (computerChoice === "rock")
                 {
-                    result.textContent = "You win! Paper beats Rock.";
+                    score.textContent = "You win! Paper beats Rock.";
                     humanScore++;
                 }
 
                 else
                 {
-                    result.textContent = "You lose! Scissors beats paper.";
+                    score.textContent = "You lose! Scissors beats paper.";
                     computerScore++;
                 }
 
                 break;
 
-            case "Scissors":
+            case "scissors":
                 if (computerChoice === "rock")
                 {
-                    result.textContent = "You lose! Rock beats Scissors.";
+                    score.textContent = "You lose! Rock beats Scissors.";
                     computerScore++;
                 }
 
                 else
                 {
-                    result.textContent = "You win! Scissors beats paper.";
+                    score.textContent = "You win! Scissors beats paper.";
                     humanScore++;
                 }
 
                 break;
         }
     }
+    // display the running score
+    sBoard.textContent = `ScoreBoard:\nYour score: ${humanScore}; Computer score: ${computerScore}`;
 }
 
 // function playGame ()

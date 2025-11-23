@@ -1,3 +1,6 @@
+let humanScore    = 0;
+let computerScore = 0;
+
 function getComputerChoice ()
 {
     let choice = Math.floor((Math.random() * 3)) + 1;
@@ -14,9 +17,6 @@ function getComputerChoice ()
             return ""
     }
 }
-
-let humanScore    = 0;
-let computerScore = 0;
 
 function playRound (humanChoice, computerChoice)
 {
@@ -86,6 +86,7 @@ function playRound (humanChoice, computerChoice)
                 break;
         }
     }
+
     // display the running score
     sBoard.textContent = `ScoreBoard:\nYour score: ${humanScore}; Computer score: ${computerScore}`;
 
@@ -102,6 +103,9 @@ function playRound (humanChoice, computerChoice)
             winner.textContent = "Computer Wins the Game!";
             winner.style.color = "red"
         }
+
+        humanScore = 0;
+        computerScore = 0;
     }
 }
 

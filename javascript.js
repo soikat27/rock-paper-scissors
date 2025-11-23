@@ -15,23 +15,19 @@ function getComputerChoice ()
     }
 }
 
-function getHumanChoice ()
-{
-    let choice = prompt("Please type your valid choice (rock/paper/scissors): ");
-    return choice.toLowerCase();
-}
-
-let humanScore = 0;
+let humanScore    = 0;
 let computerScore = 0;
 
 function playRound (humanChoice, computerChoice)
 {
     const score = document.querySelector(".score");
     const sBoard = document.querySelector(".scoreBoard");
+    const winner = document.querySelector(".winner");
 
     if (humanChoice === computerChoice)
     {
         score.textContent = "Tie!";
+        score.style.color = "whiteSmoke";
     }
 
     else
@@ -42,12 +38,14 @@ function playRound (humanChoice, computerChoice)
                 if (computerChoice === "paper")
                 {
                     score.textContent = "You lose! Paper beats Rock.";
+                    score.style.color = "red";
                     computerScore++;
                 }
 
                 else 
                 {
                     score.textContent = "You win! Rock beats Scissors.";
+                    score.style.color = "green";
                     humanScore++;
                 }
 
@@ -57,12 +55,14 @@ function playRound (humanChoice, computerChoice)
                 if (computerChoice === "rock")
                 {
                     score.textContent = "You win! Paper beats Rock.";
+                    score.style.color = "green";
                     humanScore++;
                 }
 
                 else
                 {
                     score.textContent = "You lose! Scissors beats paper.";
+                    score.style.color = "red";
                     computerScore++;
                 }
 
@@ -72,12 +72,14 @@ function playRound (humanChoice, computerChoice)
                 if (computerChoice === "rock")
                 {
                     score.textContent = "You lose! Rock beats Scissors.";
+                    score.style.color = "red";
                     computerScore++;
                 }
 
                 else
                 {
                     score.textContent = "You win! Scissors beats paper.";
+                    score.style.color = "green";
                     humanScore++;
                 }
 
@@ -86,55 +88,30 @@ function playRound (humanChoice, computerChoice)
     }
     // display the running score
     sBoard.textContent = `ScoreBoard:\nYour score: ${humanScore}; Computer score: ${computerScore}`;
+
+    // display winner
+    if (humanScore == 5 || computerScore == 5)
+    {
+        if (humanScore == 5)
+        {
+            winner.textContent = "You Win the Game!";
+            winner.style.color = "green";
+        }
+        else
+        {
+            winner.textContent = "Computer Wins the Game!";
+            winner.style.color = "red"
+        }
+    }
 }
-
-// function playGame ()
-// {
-//     for (let round = 1; round <= 5; round++)
-//     {
-//         console.log("Round " + round + ":");
-
-//         let humanChoice = getHumanChoice();
-//         let computerChoice = getComputerChoice();
-//         playRound(humanChoice, computerChoice);
-
-//         console.log(`ScoreBoard:\nYour score: ${humanScore}; Computer score: ${computerScore}`);
-//     }
-
-//     if (humanScore > computerScore)
-//     {
-//         console.log("You Win the Game!");
-//     }
-
-//     else if (humanScore < computerScore)
-//     {
-//         console.log("Computer Wins the Game!");
-//     }
-
-//     else
-//     {
-//         console.log("The Game Ended in a Tie!")
-//     }
-
-//     humanScore = 0;
-//     computerScore = 0;
-// }
-
-// playRound(getHumanChoice(), getComputerChoice());
-
-// add eventListeners to the buttons
-
-    // querySelect the element
-    // create a function that calls playRound with a humanChoice the buttons representing
-    // prepare eventListener
 
 const rock     = document.querySelector("button#rock");
 const paper    = document.querySelector("button#paper");
 const scissors = document.querySelector("button#scissors");
 
-function callRock(e)
+function call(e)
 {
-    const btn = e.target.id;
+    const btn = e.currentTarget.id;
 
     switch (btn)
     {
@@ -152,6 +129,8 @@ function callRock(e)
     }
 }
 
-rock.addEventListener("click", callRock);
-paper.addEventListener("click", callRock);
-scissors.addEventListener("click", callRock);
+rock.addEventListener("click", call);
+paper.addEventListener("click", call);
+scissors.addEventListener("click", call);
+
+console.log(rock);

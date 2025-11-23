@@ -1,7 +1,13 @@
+// Global State
 let humanScore    = 0;
 let computerScore = 0;
 
-function getComputerChoice ()
+const score = document.querySelector(".score");
+const sBoard = document.querySelector(".scoreBoard");
+const winner = document.querySelector(".winner");
+
+// Utility Functions
+function getComputerChoice()
 {
     let choice = Math.floor((Math.random() * 3)) + 1;
 
@@ -18,7 +24,33 @@ function getComputerChoice ()
     }
 }
 
-function playRound (humanChoice, computerChoice)
+function updateScoreBoard()
+{
+    boardText.textContent = `ScoreBoard:
+    Your score: ${humanScore}; Computer score: ${computerScore}`;
+}
+
+function announceWinner()
+{
+    if (humanScore == 5 || computerScore == 5)
+    {
+        if (humanScore == 5)
+        {
+            winner.textContent = "You Win the Game!";
+            winner.style.color = "green";
+        }
+        else
+        {
+            winner.textContent = "Computer Wins the Game!";
+            winner.style.color = "red"
+        }
+
+        humanScore = 0;
+        computerScore = 0;
+    }
+}
+
+function playRound(humanChoice, computerChoice)
 {
     const score = document.querySelector(".score");
     const sBoard = document.querySelector(".scoreBoard");
@@ -91,24 +123,13 @@ function playRound (humanChoice, computerChoice)
     sBoard.textContent = `ScoreBoard:\nYour score: ${humanScore}; Computer score: ${computerScore}`;
 
     // display winner
-    if (humanScore == 5 || computerScore == 5)
+    if (humanScore === 5 || computerScore === 5) 
     {
-        if (humanScore == 5)
-        {
-            winner.textContent = "You Win the Game!";
-            winner.style.color = "green";
-        }
-        else
-        {
-            winner.textContent = "Computer Wins the Game!";
-            winner.style.color = "red"
-        }
-
-        humanScore = 0;
-        computerScore = 0;
+        announceWinner();
     }
 }
 
+// Event Handler
 const rock     = document.querySelector("button#rock");
 const paper    = document.querySelector("button#paper");
 const scissors = document.querySelector("button#scissors");
@@ -136,5 +157,3 @@ function call(e)
 rock.addEventListener("click", call);
 paper.addEventListener("click", call);
 scissors.addEventListener("click", call);
-
-console.log(rock);

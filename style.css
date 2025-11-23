@@ -30,11 +30,11 @@
     text-align: center;
     color: whitesmoke;
 }
-.msg h3 {
+.title-msg{
     margin-bottom: 10px;
     font-size: 32px;
 }
-.msg h5 {
+.subtitle-msg{
     font-size: 20px;
     font-weight: 300;
     color: #c72b3c;
@@ -47,6 +47,17 @@ span {
 button {
     background: none;
     border: none;
+    cursor: pointer;
+}
+
+button:hover img {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+button:active img {
+    transform: scale(0.92);
+    opacity: 0.8;
 }
 
 img {
